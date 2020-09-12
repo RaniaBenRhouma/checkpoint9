@@ -1,0 +1,29 @@
+ALGORITHM pb1_s2hash
+VAR
+ htab : HASH_TABLE<INTEGER,INTEGER> 
+ entr,count : INTEGER ;
+ tab : ARRAY_OF INTEGER[50]; /// taille max 256
+ i,sum:INTEGER:= 0 ;
+
+BEGIN
+    read(entr);
+    tab[i]= entr ; //tab for keys 
+     i:= i + 1 ;
+     
+           count:= 0 ;
+           IF (htab.lookup(entr) = TRUE) THEN
+           count := htab.get(entr);
+           htab.insert(entr,count+1);
+       ELSE
+           htab.insert(entr,1);
+       END_IF
+
+    FOR j FROM 0 TO i STEP 1  DO
+        IF (htab.get(tab[j])=1) THEN
+            sum:= sum + tab[j];
+        END_IF
+    END_FOR
+
+    write("sum:= ", sum);
+
+END

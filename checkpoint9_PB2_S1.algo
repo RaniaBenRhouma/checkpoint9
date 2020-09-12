@@ -1,0 +1,30 @@
+ALGORITHM pb2_s1arr
+VAR
+    set1: ARRAY_OF INTEGER[4];
+    set2: ARRAY_OF INTEGER[5];
+    i,j,sum: INTEGER := 0;
+    test: BOOLEAN ;
+
+BEGIN
+    set1:={3,1,7,9};
+    set2:={2,4,1,9,3};
+    //testing set1
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+           test:=false; // moch mawjoud par default
+        WHILE (j< set2.length) DO
+                IF (set1[i]=set2[j]) THEN
+                  test:= true ; //elt mawjoud
+                  BREAK ; // o5roj mil while (break matimchich ala for ken ala while..do,switch)
+                END_IF 
+                j:= j + 1 ;     
+     
+        END_WHILE   
+
+        IF (test=true) THEN
+            sum:= sum + set1[i] ;
+        END_IF
+    END_FOR
+
+    write("sum:= ", sum*2);
+    
+END
